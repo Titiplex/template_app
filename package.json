@@ -1,27 +1,40 @@
 {
-  "name": "comptability",
-  "version": "1.0.0",
-  "description": "App for easing the management of one's own finances",
+  "name": "electron-vue-prisma-template",
+  "productName": "Electron Vue Prisma Template",
+  "version": "0.1.0",
+  "description": "Starter template for Electron desktop apps using Vue, Vite, Tailwind CSS, DaisyUI and Prisma with SQLite.",
   "main": "electron/main.js",
   "type": "commonjs",
-  "scripts": {
-    "build:vite": "npm run build:css && vite build",
-    "test": "echo \"No test configured\" && exit 1",
-    "package": "electron-forge package",
-    "build:css": "tailwindcss -i src/input.css -o public/output.css",
-    "typecheck": "vue-tsc --noEmit",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:studio": "prisma studio",
-    "start": "npm run prisma:generate && npm run typecheck && npm run build:vite && electron-forge start",
-    "make": "npm run prisma:generate && npm run typecheck && npm run build:vite && electron-forge make",
-    "publish": "npm run prisma:generate && npm run typecheck && npm run build:vite && electron-forge publish"
-  },
   "author": "Titiplex",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Titiplex/comptable"
+    "url": "https://github.com/Titiplex/template_app"
+  },
+  "scripts": {
+    "build:css": "tailwindcss -i src/input.css -o src/styles/output.css",
+    "build:vite": "npm run build:css && vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "prisma:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "postinstall": "prisma generate",
+    "start": "npm run prisma:generate && npm run typecheck && npm run build:vite && electron-forge start",
+    "package": "npm run prisma:generate && npm run typecheck && npm run build:vite && electron-forge package",
+    "make": "npm run prisma:generate && npm run typecheck && npm run build:vite && electron-forge make",
+    "publish": "npm run prisma:generate && npm run typecheck && npm run build:vite && electron-forge publish",
+    "test": "echo \"No tests configured yet\""
+  },
+  "dependencies": {
+    "@prisma/client": "^6.7.0",
+    "@tailwindcss/cli": "^4.2.2",
+    "daisyui": "^5.5.19",
+    "electron-squirrel-startup": "^1.0.1",
+    "tailwindcss": "^4.2.2",
+    "update-electron-app": "^3.1.2",
+    "vite": "^8.0.8",
+    "vue": "^3.5.32"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.6.1",
@@ -38,18 +51,8 @@
     "@types/node": "^25.6.0",
     "@vitejs/plugin-vue": "^6.0.6",
     "electron": "^41.2.1",
-    "prisma": "^7.7.0",
+    "prisma": "^6.7.0",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.2.6"
-  },
-  "dependencies": {
-    "@prisma/client": "^7.7.0",
-    "@tailwindcss/cli": "^4.2.2",
-    "daisyui": "^5.5.19",
-    "electron-squirrel-startup": "^1.0.1",
-    "tailwindcss": "^4.2.2",
-    "update-electron-app": "^3.1.2",
-    "vite": "^8.0.8",
-    "vue": "^3.5.32"
   }
 }
